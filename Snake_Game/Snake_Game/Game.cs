@@ -12,10 +12,10 @@ namespace Snake {
             //DrawChar(4, 5, '#');
 
             // OOP example
-            Point p1 = new Point {X = 1, Y = 3, Symbol = '*'};
+            Point p1 = new Point(1, 3, '*');
             p1.Draw();
 
-            Point p2 = new Point {X = 4, Y = 5, Symbol = '#'};
+            Point p2 = new Point(4, 5, '#');
             p2.Draw();
 
             Console.ReadLine();
