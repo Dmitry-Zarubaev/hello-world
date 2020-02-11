@@ -10,15 +10,13 @@ namespace Snake {
             // Procedure example
             //DrawChar(1, 3, '*');
             //DrawChar(4, 5, '#');
-            List<Point> pointsList = new List<Point>();
-            char[] chars = { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '=' };
+
 
             // OOP example
-            for (int i = 0; i < chars.Length; i++) {
-                Point point = new Point(i, i, chars.ElementAt(i));
-                point.Draw();
-                pointsList.Add(point);
-            }
+            PlainLine line = new PlainLine(new Point(5, 5, '#'), Console.WindowWidth - 15);
+            line.DrawHorizontal();
+            line.SetLine(new Point(5, 5, '#'), Console.WindowHeight - 15);
+            line.DrawVertical();
 
             Console.ReadLine();
         }

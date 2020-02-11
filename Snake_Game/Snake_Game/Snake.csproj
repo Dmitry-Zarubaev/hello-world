@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9F962182-C956-4A74-8ED4-1E8FECB39746}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Snake_Game</RootNamespace>
+    <RootNamespace>Snake</RootNamespace>
     <AssemblyName>Snake_Game</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlainLine.cs" />
     <Compile Include="RAM.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Point.cs" />
