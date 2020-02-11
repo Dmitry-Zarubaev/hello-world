@@ -1,0 +1,6 @@
+C:\Users\metal\Documents\GeekBrains\Основы ООП\hello-world\Snake_Game\Snake_Game\bin\Debug\Snake_Game.exe.config
+C:\Users\metal\Documents\GeekBrains\Основы ООП\hello-world\Snake_Game\Snake_Game\bin\Debug\Snake_Game.exe
+C:\Users\metal\Documents\GeekBrains\Основы ООП\hello-world\Snake_Game\Snake_Game\bin\Debug\Snake_Game.pdb
+C:\Users\metal\Documents\GeekBrains\Основы ООП\hello-world\Snake_Game\Snake_Game\obj\Debug\Snake.csprojAssemblyReference.cache
+C:\Users\metal\Documents\GeekBrains\Основы ООП\hello-world\Snake_Game\Snake_Game\obj\Debug\Snake_Game.exe
+C:\Users\metal\Documents\GeekBrains\Основы ООП\hello-world\Snake_Game\Snake_Game\obj\Debug\Snake_Game.pdb
