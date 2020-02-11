@@ -1,5 +1,5 @@
 # hello-world
 
-Training to work in GitHub
+It is my personal sandbox repo. A safe place where I can do different things for my learning purposes.
 
-Try to understand difference between GitHub and SVN
+For now, here I keep a little C# project. The project is based on a course of OOP basis from the studying portal GeekBrains.ru
