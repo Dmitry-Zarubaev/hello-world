@@ -10,6 +10,8 @@ namespace Snake {
         public int Y;
         public char Symbol;
 
+        public Point() {}
+
         public Point(int _x, int _y, char _symbol) {
             X = _x;
             Y = _y;

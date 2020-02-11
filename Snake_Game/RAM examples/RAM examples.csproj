@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9F962182-C956-4A74-8ED4-1E8FECB39746}</ProjectGuid>
+    <ProjectGuid>{02C6EBC5-50AD-4DD3-9A1B-440E380515DC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Snake_Game</RootNamespace>
-    <AssemblyName>Snake_Game</AssemblyName>
+    <RootNamespace>RAM_examples</RootNamespace>
+    <AssemblyName>RAM_examples</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RAM.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="Point.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
