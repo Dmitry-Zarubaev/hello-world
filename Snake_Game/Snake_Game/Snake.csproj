@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Food.cs" />
     <Compile Include="PlainLine.cs" />
-    <Compile Include="RAM.cs" />
+    <Compile Include="Rectangle.cs" />
+    <Compile Include="Snake.cs" />
+    <None Include="RAM.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
