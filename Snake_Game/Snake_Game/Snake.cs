@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 
 namespace Snake {
-    public enum NextCrawl {
+    public enum CrawlResult {
         SAFE,
         FOOD,
         DEATH
@@ -68,36 +68,33 @@ namespace Snake {
             }
         }
 
-        internal void Kill() {
+        internal void Die() {
             foreach (Point segment in Body) {
                 segment.Undraw();
             }
         }
 
-        internal NextCrawl plotNextCrawl() {
-            throw new NotImplementedException();
-        }
-
         private void KeyListener() {
             if (Console.KeyAvailable) {
-                ConsoleKeyInfo info = Console.ReadKey();
+                ConsoleKeyInfo info = Console.ReadKey(true);
 
+                // Snake can't turn on opposite direction
                 switch (info.Key) {
                     case ConsoleKey.NumPad8:
                     case ConsoleKey.UpArrow:
-                        Direction = Direction.UP;
+                        Direction = Direction == Direction.DOWN ? Direction.DOWN : Direction.UP;
                         break;
                     case ConsoleKey.NumPad2:
                     case ConsoleKey.DownArrow:
-                        Direction = Direction.DOWN;
+                        Direction = Direction == Direction.UP ? Direction.UP : Direction.DOWN;
                         break;
                     case ConsoleKey.NumPad4:
                     case ConsoleKey.LeftArrow:
-                        Direction = Direction.LEFT;
+                        Direction = Direction == Direction.RIGHT ? Direction.RIGHT : Direction.LEFT;
                         break;
                     case ConsoleKey.NumPad6:
                     case ConsoleKey.RightArrow:
-                        Direction = Direction.RIGHT;
+                        Direction = Direction == Direction.LEFT ? Direction.LEFT : Direction.RIGHT;
                         break;
                     default:
                         break;
@@ -105,23 +102,31 @@ namespace Snake {
             }
         }
 
-        public void Crawl(bool grow = false) {
+        public CrawlResult Crawl(Point food) {
+            KeyListener();
+
             Point head = Body[0];
-            int headX = head.X;
-            int headY = head.Y;
-            head.Shift(Direction);
+            Point tail = Body[Body.Count - 1];
             Body.Remove(head);
 
-            if (!grow) {
-                Point tail = Body[Body.Count - 1];
-                tail.Undraw();
-                Body.Remove(tail);
-            }
-
-            Point neck = new Point(headX, headY, head.Symbol);
-            neck.Draw();
+            Point neck = new Point(head.X, head.Y, head.Symbol, ConsoleColor.White);
             Body.Insert(0, neck);
-            Body.Insert(0, head);
+
+            head.Shift(Direction);
+            neck.Draw();
+
+            if (Body.Exists(p => p.isSamePosition(head))) {
+                Die();
+                return CrawlResult.DEATH;
+            } else if (head.isSamePosition(food)) {
+                Body.Insert(0, head);
+                return CrawlResult.FOOD;
+            } else {
+                tail.Undraw();
+                Body.Insert(0, head);
+                Body.Remove(tail);
+                return CrawlResult.SAFE;
+            }
         }
     }
 }

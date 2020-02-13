@@ -13,11 +13,16 @@ namespace Snake {
     }
     class Game {
         static void Main(string[] args) {
-            Console.WindowHeight = 40;
-            Console.WindowWidth = 150;
+            int left = 2, right = 60, top = 2, bottom = 30;
+
+
+            Console.WindowHeight = bottom;
+            Console.WindowWidth = right;
             Console.CursorVisible = false;
             bool gameover = false;
             int sensivity = 250;
+            int level = 1;
+            int score = 0;
 
             while (true) {
                 if (Console.KeyAvailable) {
@@ -33,27 +38,38 @@ namespace Snake {
             Rectangle borders = new Rectangle('+', Rectangle.RectangleType.FULL_WINDOW);
             borders.DrawRectangle();
 
-            Snake snake = new Snake(new Point(10, 10, '@'), 5, Direction.RIGHT);
-            Food food = new Food(2, 148, 3, 39, snake, '+');
+            Snake snake = new Snake(new Point(10, 10, '@'), 5, Direction.LEFT);
+            Food food = new Food(left, right - 1, top, bottom - 2, snake, 'Ж');
+            Point foodPlace = food.Craft();
 
             while (!gameover) {
 
-
-                switch (snake.plotNextCrawl()) {
-                    case NextCrawl.DEATH:
-                        snake.Kill();
+                switch (snake.Crawl(foodPlace)) {
+                    case CrawlResult.DEATH:
+                        food.Undraw();
                         gameover = true;
                         break;
-                    case NextCrawl.FOOD:
-                        snake.Crawl(true);
+                    case CrawlResult.FOOD:
+                        score++;
+                        if (sensivity > 100 && score % 3 == 0) {
+                            level++;
+                            sensivity -= 25;
+                        }
+                        foodPlace = food.Craft();
                         break;
-                    case NextCrawl.SAFE:
-                        snake.Crawl();
+                    case CrawlResult.SAFE:
                         break;
                 }
 
                 Thread.Sleep(sensivity);
             }
+            string messageGameOver = "GAME OVER";
+            Console.SetCursorPosition((Console.WindowWidth - 2 - messageGameOver.Length) / 2, Console.WindowHeight / 2);
+            Console.WriteLine(messageGameOver);
+            string messageScore = $"score: {score}, level: {level}";
+            Console.SetCursorPosition((Console.WindowWidth - 2 - messageScore.Length) / 2, (Console.WindowHeight / 2) + 1);
+            Console.WriteLine(messageScore);
+            Console.ReadLine();
         }
     }
 }

@@ -42,21 +42,42 @@ namespace Snake {
 
         public void Shift(Direction direction) {
             Undraw();
+            // Allow to shift a point through the window borders plus symbolic rectangle
             switch (direction) {
                 case Direction.UP:
-                    Y--;
+                    if (Y - 1 == 0) {
+                        Y = Console.WindowHeight - 3;
+                    } else {
+                        Y--;
+                    }
                     break;
                 case Direction.DOWN:
-                    Y++;
+                    if (Y + 1 == Console.WindowHeight - 2) {
+                        Y = 1;
+                    } else {
+                        Y++;
+                    }
                     break;
                 case Direction.LEFT:
-                    X--;
+                    if (X - 1 == 0) {
+                        X = Console.WindowWidth - 2;
+                    } else {
+                        X--;
+                    }
                     break;
                 case Direction.RIGHT:
-                    X++;
+                    if (X + 1 >= Console.WindowWidth - 2) {
+                        X = 1;
+                    } else {
+                        X++;
+                    }
                     break;
             }
             Draw();
+        }
+
+        public bool isSamePosition(Point point) {
+            return point.X == X && point.Y == Y;
         }
 
         public void Move(int x, int y) {
